@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://do8hj1cfnxweq"]
+
+[ext_resource type="Script" path="res://Scenes/WaterBody.cs" id="1_u45j4"]
+[ext_resource type="Shader" path="res://Shaders/WaterBody.gdshader" id="3_hqbqd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qidd"]
+shader = ExtResource("3_hqbqd")
+shader_parameter/points = PackedVector2Array(4, 23, 32.2105, 23, 60.4211, 23, 88.6316, 23, 116.842, 23, 145.053, 23, 173.263, 23, 201.474, 23, 229.684, 23, 257.895, 23, 286.105, 23, 314.316, 23, 342.526, 23, 370.737, 23, 398.947, 23, 427.158, 23, 455.368, 23, 483.579, 23, 511.789, 23, 540, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crn3k"]
+size = Vector2(536, 246)
+
+[node name="WaterBody" type="ColorRect"]
+material = SubResource("ShaderMaterial_8qidd")
+offset_top = 1.0
+offset_right = 606.0
+offset_bottom = 293.0
+script = ExtResource("1_u45j4")
+WaveStiffness = 0.015
+WaveDampening = 0.03
+WaveSpreadFactor = 0.2
+WaveImpactPower = 100.0
+ContinousImpactPower = 50.0
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(303, 156)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_crn3k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

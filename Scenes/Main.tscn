@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnrmf7kpp8y5u"]
+
+[ext_resource type="PackedScene" uid="uid://do8hj1cfnxweq" path="res://Scenes/WaterBody.tscn" id="1_mix6t"]
+[ext_resource type="Script" path="res://Scenes/Main.cs" id="1_sscfq"]
+[ext_resource type="Texture2D" uid="uid://bq5jro634fhe" path="res://icon.svg" id="3_1njir"]
+[ext_resource type="Script" path="res://Scenes/Player.cs" id="4_vpcsd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45g80"]
+size = Vector2(48, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1p3d"]
+size = Vector2(583, 106)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_sscfq")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-388, -71)
+script = ExtResource("4_vpcsd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("3_1njir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_45g80")
+
+[node name="WaterBody" parent="." instance=ExtResource("1_mix6t")]
+offset_left = 4.0
+offset_top = -377.0
+offset_right = 540.0
+offset_bottom = 269.0
+WaveTargetHeight = 400.0
+WaveImpactPower = 25.0
+ContinousImpact = true
+ContinousImpactPower = 100.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(268, 125)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-285, 63)
+scale = Vector2(4.51562, 0.877269)
+texture = ExtResource("3_1njir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(-281.5, 62)
+shape = SubResource("RectangleShape2D_m1p3d")
+
+[node name="Sprite2D2" type="StaticBody2D" parent="."]
+position = Vector2(552, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-285, 63)
+scale = Vector2(4.51562, 0.877269)
+texture = ExtResource("3_1njir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2"]
+position = Vector2(-281.5, 62)
+shape = SubResource("RectangleShape2D_m1p3d")
+
+[node name="Sprite2D3" type="StaticBody2D" parent="."]
+position = Vector2(1097, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D3"]
+position = Vector2(-285, 63)
+scale = Vector2(4.51562, 0.877269)
+texture = ExtResource("3_1njir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D3"]
+position = Vector2(-281.5, 62)
+shape = SubResource("RectangleShape2D_m1p3d")
